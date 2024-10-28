@@ -1,0 +1,100 @@
+
+.Header {
+    width: 100%;
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Moderustic", sans-serif;
+    border-bottom: 2px solid gray;
+} 
+
+
+.Header-up{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.Header-up-left{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Header-up-left img {
+    width: 250px;
+    height: 100px;
+    filter: invert(0.8);
+}
+
+.Header-up-right{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header-up-right button{
+    display: flex;
+    width: 110px;
+    height: 45px;
+    align-items: center;
+    justify-content:center;
+    flex-direction: row;
+    border-radius: 8px;
+    gap: 6px;   
+    background-color: rgba(255, 255, 255, 0.744);
+}
+
+.Header-up-right button svg{
+    font-size: 17px;
+}
+
+.Header-up-right button p {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.Header-down {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header-down ul{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header-down ul li{
+    font-size: 18px;
+    width: 20%;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.Header-down ul li a {
+    text-decoration: none;
+    list-style-type: none;
+    color: rgba(255, 255, 255, 0.744);
+}
+
+.active{
+    color: rgb(137, 15, 137) !important;
+}
+
+.menu-burger{
+    display: none;
+}
