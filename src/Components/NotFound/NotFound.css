@@ -1,0 +1,12 @@
+.NotFound{
+    width: 100%;
+    height: auto;
+    margin-bottom: -55px;
+}
+
+.NotFound img{
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
