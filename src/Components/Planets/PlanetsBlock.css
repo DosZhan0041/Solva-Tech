@@ -1,28 +1,15 @@
-.PeopleBlock{
+.PlanetBlock{
     width: 17%;
-    height: 350px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(rgb(3, 3, 69), rgb(211, 50, 211),rgb(3, 3, 69));
+    background: linear-gradient(rgb(184, 108, 27),rgb(3, 3, 69));
     border-radius: 10px;
 }
 
-.People-photo{
-    width: 100%;
-    height: 75%;
-}
-
-.People-photo img{
-    width: 100%;
-    height: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-
-.PeopleBlock button{
+.PlanetBlock button{
     width: 120px;
     height: 30px;
     border-radius: 7px;
@@ -32,21 +19,21 @@
     transition: .6s;
 }
 
-.PeopleBlock button:hover{
+.PlanetBlock button:hover{
     background-color: #d5d0d0;
     color: rgb(18, 17, 17);
     border: 3px solid black;
 }
 
-.People-name{
+.Planet-name{
     width: 100%;
-    height: 25px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.People-name h3{
+.Planet-name h3{
     font-size: 20px;
 }
 

@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import People from "./People";
+import Starship from "./Starship";
 import { connect } from "react-redux";
-import { getPeople, setPeoplePage, togglePreloader } from "../../store/PeopleReducer";
+import { getStarship,  setStarshipPage, togglePreloader } from "../../store/StarshipReducer";
 import withAuthRedirect from "../HOC/withAuthRedirect";
 
 
-let PeopleContainer = (props) =>{
+let StarshipContainer = (props) =>{
     const fetchPeople = (page)=>{
             props.togglePreloader(true)
-            fetch(`https://swapi.dev/api/people/?page=${page}`)
+            fetch(`https://swapi.dev/api/starships/?page=${page}`)
             .then (function(response){
                 if(!response.ok){
                     throw new Error('Ошибка GET запроса, статус ' + response.status);
@@ -16,8 +16,8 @@ let PeopleContainer = (props) =>{
                 return response.json();
             })
             .then(function(data) {
-                let characters = data.results;
-                props.getPeople(characters, data.count)
+                let Starship = data.results;
+                props.getStarship(Starship, data.count)
                 props.togglePreloader(false)
             })
             .catch(function(error) {
@@ -25,25 +25,25 @@ let PeopleContainer = (props) =>{
             });
     }
     useEffect(()=>{
-        fetchPeople(props.PeoplePage.currentPeoplePage)
-    },[props.PeoplePage.currentPeoplePage])
-    return <People {...props}/>
+        fetchPeople(props.StarshipPage.currentStarshipPage)
+    },[props.StarshipPage.currentStarshipPage])
+    return <Starship {...props}/>
 }
 
 let mapStateToProps = (state) => {
     return{
-        PeoplePage: state.PeoplePage,
-        isLoad: state.PeoplePage.isLoad
+        StarshipPage: state.StarshipPage,
+        isLoad: state.StarshipPage.isLoad
     }
 }
 
 let mapDispatchToProps = (dispatch) =>{
     return{
-        getPeople:(people, totalPeopleCount) => {
-            dispatch(getPeople(people, totalPeopleCount))
+        getStarship:(Starship, totalStarshipCount) => {
+            dispatch(getStarship(Starship, totalStarshipCount))
         },
-        setPeoplePage: (page)=>{
-            dispatch(setPeoplePage(page))
+        setStarshipPage: (page)=>{
+            dispatch(setStarshipPage(page))
         },
         togglePreloader: (status)=>{
             dispatch(togglePreloader(status))
@@ -51,5 +51,5 @@ let mapDispatchToProps = (dispatch) =>{
     }
 }
 
-let AuthRedirect = withAuthRedirect(PeopleContainer)
+let AuthRedirect = withAuthRedirect(StarshipContainer)
 export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirect)

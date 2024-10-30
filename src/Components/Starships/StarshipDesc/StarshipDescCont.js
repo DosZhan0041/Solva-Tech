@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import PeopleDescription from "./PeopleDescription";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
+import StarshipDesc from "./StarshipDesc";
 import withAuthRedirect from "../../HOC/withAuthRedirect";
 
-let PeopleDescContainer = (props) => {
-    let [onePerson, setOnePerson] = useState({});
+let StarshipDescContainer = (props) => {
+    let [oneStarship, setOneStarship] = useState({});
     let [editMode, setEditMode] = useState(false);
-    let [editedPerson, setEditedPerson] = useState({});
+    let [editedStarship, setEditedStarship] = useState({});
 
     const { id } = useParams();
 
     useEffect(() => {
-        const adjustedId = id === "17" ? 18 : parseInt(id);
-        fetch(`https://swapi.dev/api/people/${adjustedId}`)
+        const adjustedId = id;
+        fetch(`https://swapi.dev/api/starships/${adjustedId}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Ошибка сети: ' + response.status);
@@ -21,9 +21,8 @@ let PeopleDescContainer = (props) => {
                 return response.json();
             })
             .then((data) => {
-                data.image = `https://starwars-visualguide.com/assets/img/characters/${adjustedId}.jpg`;
-                setOnePerson(data);
-                setEditedPerson(data); 
+                setOneStarship(data);
+                setEditedStarship(data); 
             })
             .catch((error) => {
                 console.log(error);
@@ -35,20 +34,20 @@ let PeopleDescContainer = (props) => {
     };
 
     const handleSave = (data) => {
-      const updatedPerson = {
-          ...editedPerson, 
+      const updatedStarship = {
+          ...editedStarship, 
           ...data, 
-          image: onePerson.image 
+          image: oneStarship.image 
       };
-      setOnePerson(updatedPerson);  
-      setEditedPerson(updatedPerson); 
+      setOneStarship(updatedStarship);  
+      setEditedStarship(updatedStarship); 
       setEditMode(false);   
   };
 
     return (
-        <PeopleDescription 
+        <StarshipDesc
             {...props} 
-            onePerson={editMode ? editedPerson : onePerson}
+            oneStarship={editMode ? editedStarship : oneStarship}
             onEdit={handleEdit}
             onSave={handleSave}
             editMode={editMode}
@@ -58,9 +57,9 @@ let PeopleDescContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        PeoplePage: state.PeoplePage
+        StarshipPage: state.StarshipPage
     };
 };
 
-let AuthRedirect = withAuthRedirect(PeopleDescContainer)
+let AuthRedirect = withAuthRedirect(StarshipDescContainer)
 export default connect(mapStateToProps)(AuthRedirect);

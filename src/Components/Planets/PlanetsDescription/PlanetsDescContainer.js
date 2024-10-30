@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import PeopleDescription from "./PeopleDescription";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
+import PlanetDescription from "./PlanetsDescription";
 import withAuthRedirect from "../../HOC/withAuthRedirect";
 
-let PeopleDescContainer = (props) => {
-    let [onePerson, setOnePerson] = useState({});
+let PlanetDescContainer = (props) => {
+    let [onePlanet, setOnePlanet] = useState({});
     let [editMode, setEditMode] = useState(false);
-    let [editedPerson, setEditedPerson] = useState({});
+    let [editedPlanet, setEditedPlanet] = useState({});
 
     const { id } = useParams();
 
     useEffect(() => {
-        const adjustedId = id === "17" ? 18 : parseInt(id);
-        fetch(`https://swapi.dev/api/people/${adjustedId}`)
+        const adjustedId = id;
+        fetch(`https://swapi.dev/api/planets/${adjustedId}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Ошибка сети: ' + response.status);
@@ -21,9 +21,8 @@ let PeopleDescContainer = (props) => {
                 return response.json();
             })
             .then((data) => {
-                data.image = `https://starwars-visualguide.com/assets/img/characters/${adjustedId}.jpg`;
-                setOnePerson(data);
-                setEditedPerson(data); 
+                setOnePlanet(data);
+                setEditedPlanet(data); 
             })
             .catch((error) => {
                 console.log(error);
@@ -35,20 +34,20 @@ let PeopleDescContainer = (props) => {
     };
 
     const handleSave = (data) => {
-      const updatedPerson = {
-          ...editedPerson, 
+      const updatedPlanet = {
+          ...editedPlanet, 
           ...data, 
-          image: onePerson.image 
+          image: onePlanet.image 
       };
-      setOnePerson(updatedPerson);  
-      setEditedPerson(updatedPerson); 
+      setOnePlanet(updatedPlanet);  
+      setEditedPlanet(updatedPlanet); 
       setEditMode(false);   
   };
 
     return (
-        <PeopleDescription 
+        <PlanetDescription
             {...props} 
-            onePerson={editMode ? editedPerson : onePerson}
+            onePlanet={editMode ? editedPlanet : onePlanet}
             onEdit={handleEdit}
             onSave={handleSave}
             editMode={editMode}
@@ -58,9 +57,9 @@ let PeopleDescContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        PeoplePage: state.PeoplePage
+        PlanetPage: state.PlanetPage
     };
 };
 
-let AuthRedirect = withAuthRedirect(PeopleDescContainer)
+let AuthRedirect = withAuthRedirect(PlanetDescContainer)
 export default connect(mapStateToProps)(AuthRedirect);

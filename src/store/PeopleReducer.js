@@ -1,16 +1,15 @@
 const GET_PEOPLE = 'GET_PEOPLE'
 const SET_PEOPLE_PAGE = 'SET_PEOPLE_PAGE'
-
+const TOGGLE_PRELOADER = 'TOGGLE_PRELOADER'
 
 let initialState = {
     people: [],
-    planets: [],
-    starships: [],
     totalPeoplePages: 0,
-    currentPeoplePage: 1 
+    currentPeoplePage: 1,
+    isLoad: true,
 };
 
-let SWReducer = (state = initialState, action) =>{
+let PeopleReducer = (state = initialState, action) =>{
     switch(action.type){
         case GET_PEOPLE:{
             return{
@@ -25,6 +24,12 @@ let SWReducer = (state = initialState, action) =>{
                 currentPeoplePage: action.page
             }
         }
+        case TOGGLE_PRELOADER:{
+            return{
+                ...state,
+                isLoad: action.status
+            }
+        }
         default: 
         return state;
     }
@@ -32,6 +37,7 @@ let SWReducer = (state = initialState, action) =>{
 
 export const getPeople = (people, totalPeopleCount)=>({type: GET_PEOPLE, people: people, totalPeopleCount: totalPeopleCount})
 export const setPeoplePage = (page) =>({type: SET_PEOPLE_PAGE, page: page})
-export default SWReducer;
+export const togglePreloader = (status)=>({type: TOGGLE_PRELOADER, status: status})
+export default PeopleReducer;
 
 

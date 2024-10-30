@@ -1,11 +1,15 @@
 import { combineReducers, legacy_createStore as createStore } from "redux";
 import userReducer from "./usersReducer";
-import SWReducer from "./SWReducer";
+import PeopleReducer from "./PeopleReducer";
+import PlanetReducer from "./PlanetsReducer";
+import StarshipReducer from "./StarshipReducer";
 
 
 let reducers = combineReducers({
     userPage: userReducer,
-    SWpage: SWReducer
+    PeoplePage: PeopleReducer,
+    PlanetPage: PlanetReducer,
+    StarshipPage: StarshipReducer
 });
 let store = createStore(reducers);
 

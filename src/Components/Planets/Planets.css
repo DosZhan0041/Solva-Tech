@@ -1,10 +1,11 @@
-.people{
+.Planet{
     width: 100%;
-    height: 1000px;
+    height: 400px;
     color: rgba(255, 255, 255, 0.744);
+    margin-top: 40px;
 }
 
-.people-wrapper{
+.Planet-wrapper{
     width: 100%;
     height: 100%;
     display: flex;
@@ -12,28 +13,10 @@
     align-items: center;
 }
 
-.people-up{
+
+.Planet-down{
     width: 100%;
-    height: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    gap: 10px;
-}
-
-.people-up h1{
-    font-size: 45px;
-}
-
-
-.people-up p{
-    font-size: 20px;
-}
-
-.people-down{
-    width: 100%;
-    height: 800px;
+    height: 300px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -41,7 +24,7 @@
 }
 
 
-.people-pagination{
+.Planet-pagination{
     width: 50%;
     height: 100px;
     display: flex;
@@ -51,7 +34,7 @@
     justify-content: center;
 }
 
-.people-pagination button{
+.Planet-pagination button{
     width: 110px;
     height: 30px;
     border-radius: 5px;

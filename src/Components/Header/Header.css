@@ -50,6 +50,14 @@
     border-radius: 8px;
     gap: 6px;   
     background-color: rgba(255, 255, 255, 0.744);
+    transition: .7s;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.Header-up-right button:hover{
+    background-color: rgba(31, 17, 190, 0.454);
+    color: #dedede;
+    border-color: white;
 }
 
 .Header-up-right button svg{

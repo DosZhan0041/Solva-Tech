@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import People from "./People";
+import Planets from "./Planets";
 import { connect } from "react-redux";
-import { getPeople, setPeoplePage, togglePreloader } from "../../store/PeopleReducer";
+import { getPlanet,  setPlanetPage, togglePreloader } from "../../store/PlanetsReducer";
 import withAuthRedirect from "../HOC/withAuthRedirect";
 
 
-let PeopleContainer = (props) =>{
+let PlanetContainer = (props) =>{
     const fetchPeople = (page)=>{
             props.togglePreloader(true)
-            fetch(`https://swapi.dev/api/people/?page=${page}`)
+            fetch(`https://swapi.dev/api/planets/?page=${page}`)
             .then (function(response){
                 if(!response.ok){
                     throw new Error('Ошибка GET запроса, статус ' + response.status);
@@ -16,8 +16,8 @@ let PeopleContainer = (props) =>{
                 return response.json();
             })
             .then(function(data) {
-                let characters = data.results;
-                props.getPeople(characters, data.count)
+                let planet = data.results;
+                props.getPlanet(planet, data.count)
                 props.togglePreloader(false)
             })
             .catch(function(error) {
@@ -25,25 +25,25 @@ let PeopleContainer = (props) =>{
             });
     }
     useEffect(()=>{
-        fetchPeople(props.PeoplePage.currentPeoplePage)
-    },[props.PeoplePage.currentPeoplePage])
-    return <People {...props}/>
+        fetchPeople(props.PlanetPage.currentPlanetPage)
+    },[props.PlanetPage.currentPlanetPage])
+    return <Planets {...props}/>
 }
 
 let mapStateToProps = (state) => {
     return{
-        PeoplePage: state.PeoplePage,
-        isLoad: state.PeoplePage.isLoad
+        PlanetPage: state.PlanetPage,
+        isLoad: state.PlanetPage.isLoad
     }
 }
 
 let mapDispatchToProps = (dispatch) =>{
     return{
-        getPeople:(people, totalPeopleCount) => {
-            dispatch(getPeople(people, totalPeopleCount))
+        getPlanet:(planet, totalPlanetCount) => {
+            dispatch(getPlanet(planet, totalPlanetCount))
         },
-        setPeoplePage: (page)=>{
-            dispatch(setPeoplePage(page))
+        setPlanetPage: (page)=>{
+            dispatch(setPlanetPage(page))
         },
         togglePreloader: (status)=>{
             dispatch(togglePreloader(status))
@@ -51,5 +51,5 @@ let mapDispatchToProps = (dispatch) =>{
     }
 }
 
-let AuthRedirect = withAuthRedirect(PeopleContainer)
+let AuthRedirect = withAuthRedirect(PlanetContainer)
 export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirect)
