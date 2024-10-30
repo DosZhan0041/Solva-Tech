@@ -1,9 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import './PlanetsBlock.css'
+import React, { FC } from 'react';
 
-let PlanetBlock = (props) =>{
+interface PlanetType{
+    id: number;
+    name: string,
+}
+
+let PlanetBlock:React.FC<PlanetType> = (props) =>{
     let navigate = useNavigate()
-    let redirect = (id) => {    
+    let redirect = (id: number) => {    
         navigate(`/planet/${id}`)
     }
     return(

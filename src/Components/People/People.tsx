@@ -1,8 +1,41 @@
+import React from 'react';
 import Preloader from '../Preloader/Preloader';
 import './People.css';
 import PeopleBlock from './PeopleBlock';
 
-let People = (props) => {
+interface Person {
+    name: string;
+    height: string;
+    mass: string;
+    hair_color: string;
+    skin_color: string;
+    eye_color: string;
+    gender: string;
+    birth_year: string;
+}
+
+interface PeoplePageType{
+    currentPeoplePage: number,
+    isLoad: boolean,
+    people: Person[],
+    totalPeoplePages: number
+}
+
+interface authUserType{
+    email: string,
+    password: string
+}
+
+interface propsType {
+    PeoplePage: PeoplePageType,
+    authUser: authUserType,
+    getPeople:(people: any[], totalPeopleCount: number)=>void;
+    isLoad: boolean,
+    setPeoplePage: (page: number)=>void;
+    togglePreloader: (status: boolean)=>void;
+}  
+
+let People: React.FC<propsType> = (props) => {
     
     let currentPage = props.PeoplePage.currentPeoplePage;
     

@@ -1,9 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import './StarshipBlock.css'
+import React from 'react';
 
-let StarshipBlock = (props) =>{
+interface StarshipType{
+    id: any ;
+    name: string,
+}
+
+let StarshipBlock: React.FC<StarshipType> = (props) =>{
+    console.log(props);
+    
     let navigate = useNavigate()
-    let redirect = (id) => {    
+    let redirect = (id:number ) => {    
         navigate(`/starship/${id}`)
     }
     return(

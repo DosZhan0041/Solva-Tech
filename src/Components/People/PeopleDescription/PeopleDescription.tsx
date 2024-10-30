@@ -1,7 +1,42 @@
 import { useForm } from 'react-hook-form';
 import './PeopleDescription.css';
+import React from 'react';
 
-let PeopleDescription = (props) => {
+interface Person {
+    name: string;
+    height: string;
+    mass: string;
+    hair_color: string;
+    skin_color: string;
+    eye_color: string;
+    gender: string;
+    birth_year: string;
+    image: string
+}
+
+interface authUserType{
+    email: string,
+    password: string
+}
+
+interface PeoplePageType{
+    currentPeoplePage: number,
+    isLoad: boolean,
+    people: Person[],
+    totalPeoplePages: number
+}
+
+interface PropsType {
+    PeoplePage: PeoplePageType,
+    authUser: authUserType,
+    editMode: boolean,
+    onEdit:()=>void;
+    onSave: (data: any)=>void;
+    onePerson: Person
+}
+
+let PeopleDescription: React.FC<PropsType> = (props) => {
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             name: props.onePerson.name,
@@ -15,7 +50,7 @@ let PeopleDescription = (props) => {
         },
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: any) => {
         props.onSave(data); 
     }
 
@@ -107,7 +142,7 @@ let PeopleDescription = (props) => {
                         <p>skin-color: {props.onePerson.skin_color}</p>
                         <p>eye-color: {props.onePerson.eye_color}</p>
                         <p>gender: {props.onePerson.gender}</p>
-                        <p>birth: {props.onePerson.birth_year} - Before the Battle of Yavin</p>
+                        <p>birth: {props.onePerson.birth_year}</p>
                         <button onClick={props.onEdit}>Edit</button>
                     </div>
                 )

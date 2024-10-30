@@ -1,13 +1,43 @@
-// В компоненте Starships
-
+import React from 'react';
 import Preloader from '../Preloader/Preloader';
 import './Starship.css';
 import StarshipBlock from './StarshipBlock';
 
-let Starships = (props) => {
-    
-    let currentPage = props.StarshipPage.currentStarshipPage;
+interface StarshipType{
+    name: string,
+    model: string,
+    cost_in_credits: string,
+    length: string,
+    passengers: string,
+    starship_class: string,
+    max_atmosphering_speed: string,
+    crew: string,
+    url : string
+}
 
+interface authUserType{
+    email: string,
+    password: string
+}
+
+interface StarshipPageType{
+    Starship: StarshipType[],
+    currentStarshipPage: number,
+    isLoad: boolean,
+    totalStarshipPages: number
+}
+
+interface propsType{
+    StarshipPage: StarshipPageType,
+    authUser: authUserType,
+    isLoad: boolean,
+    getStarship: (Starship: any[], totalStarshipCount: number)=> void;
+    setStarshipPage: (page: number)=>void;
+    togglePreloader: (status: boolean)=>void;
+}
+
+let Starships: React.FC<propsType> = (props) => {
+    let currentPage = props.StarshipPage.currentStarshipPage;
     const handleNext = () => {
         if (currentPage < props.StarshipPage.totalStarshipPages) {
             props.setStarshipPage(currentPage + 1);

@@ -1,13 +1,60 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import PlanetDescription from "./PlanetsDescription";
 import withAuthRedirect from "../../HOC/withAuthRedirect";
 
-let PlanetDescContainer = (props) => {
-    let [onePlanet, setOnePlanet] = useState({});
+interface Planet {
+    name: string,
+    rotation_period: string,
+    orbital_period: string,
+    diameter: string,
+    climate: string,
+    gravity: string,
+    terrain: string,
+    population: string
+}
+
+interface PlanetPageType{
+    currentPlanetPage: number,
+    isLoad: boolean,
+    planet: Planet[],
+    totalPlanetPages: number
+}
+
+interface authUserType{
+    email: string,
+    password: string
+}
+
+interface propsType {
+    PlanetPage: PlanetPageType,
+    authUser: authUserType
+}
+
+
+let PlanetDescContainer: React.FC<propsType> = (props) => {
+    let [onePlanet, setOnePlanet] = useState<Planet>({
+        name: '',
+        rotation_period: '',
+        orbital_period: '',
+        diameter: '',
+        climate: '',
+        gravity: '',
+        terrain: '',
+        population: ''
+    });
     let [editMode, setEditMode] = useState(false);
-    let [editedPlanet, setEditedPlanet] = useState({});
+    let [editedPlanet, setEditedPlanet] = useState<Planet>({
+        name: '',
+        rotation_period: '',
+        orbital_period: '',
+        diameter: '',
+        climate: '',
+        gravity: '',
+        terrain: '',
+        population: ''
+    });
 
     const { id } = useParams();
 
@@ -33,11 +80,10 @@ let PlanetDescContainer = (props) => {
         setEditMode(true);
     };
 
-    const handleSave = (data) => {
+    const handleSave = (data: Partial<Planet>) => {
       const updatedPlanet = {
           ...editedPlanet, 
-          ...data, 
-          image: onePlanet.image 
+          ...data 
       };
       setOnePlanet(updatedPlanet);  
       setEditedPlanet(updatedPlanet); 
@@ -55,7 +101,11 @@ let PlanetDescContainer = (props) => {
     );
 };
 
-let mapStateToProps = (state) => {
+interface RootState {
+    PlanetPage: PlanetPageType
+}
+
+let mapStateToProps = (state: RootState) => {
     return {
         PlanetPage: state.PlanetPage
     };

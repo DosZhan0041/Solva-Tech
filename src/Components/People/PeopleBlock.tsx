@@ -1,9 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import './PeopleBlock.css'
+import React from 'react';
 
-let PeopleBlock = (props) =>{
+interface PersonType{
+    id: number;
+    image: string,
+    name: string
+}
+
+let PeopleBlock: React.FC<PersonType> = (props) =>{
     let navigate = useNavigate()
-    let redirect = (id) => {    
+    let redirect = (id: number) => {    
         navigate(`/people/${id}`)
     }
     return(

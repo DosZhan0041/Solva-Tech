@@ -1,0 +1,184 @@
+
+@media(max-width: 4096px){
+    .register {
+        width: 100%;
+        height: 34.3vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: rgba(255, 255, 255, 0.744);
+        margin-top: 2.06vw;
+        gap: 2.06vw;
+        background-color: rgba(0, 0, 0, 0.475);
+        padding: 2.74vw;
+        border-radius: 1.37vw;
+        border: 0.14vw solid purple;
+    }
+    
+    .register h1 {
+        font-size: 2.41vw;
+    }
+    
+    .register img {
+        width: 10.31vw;
+        filter: invert(0.7);
+    }
+    
+    .register > form {
+        width: 100%;
+        height: 27.44vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.34vw;
+        margin-top: 0.69vw;
+    }
+    
+    .register > form > input {
+        width: 20.59vw;
+        height: 2.41vw;
+        border-radius: 0.41vw;
+        padding: 0.48vw;
+        font-size: 1.1vw;
+    }
+    
+    .password {
+        width: 100%;
+        height: 2.74vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        flex-direction: column;
+    }
+    
+    .password > input {
+        width: 20.59vw;
+        height: 2.41vw;
+        border-radius: 0.41vw;
+        padding: 0.48vw;
+        font-size: 1.1vw;
+    }
+    
+    .eyes {
+        width: 1.37vw;
+        background-color: transparent;
+        font-size: 1.1vw;
+        position: absolute;
+        border: 0;
+        right: 32.52vw;
+        top: 0.83vw;
+    }
+    
+    .register > form > button {
+        width: 10.31vw;
+        height: 2.06vw;
+        border-radius: 0.41vw;
+        background-color: rgb(10, 10, 67);
+        color: aliceblue;
+        margin-top: 0.62vw;
+    }
+    
+    .register a {
+        font-size: 1.38vw;
+        text-decoration: none;
+        color: purple;
+    }
+    
+}
+.register {
+    width: 100%;
+    height: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.744);
+    margin-top: 10vw;
+    margin-bottom: 5vw;
+    gap: 5vw;
+    background-color: rgba(0, 0, 0, 0.475);
+    padding: 2.74vw;
+    border-radius: 1.37vw;
+    border: 0.14vw solid purple;
+}
+
+.error {
+    font-size: 1.5vw !important;
+}
+
+.register h1 {
+    font-size: 7vw;
+}
+
+.register img {
+    width: 25vw;
+    filter: invert(0.7);
+}
+
+.register > form {
+    width: 100%;
+    height: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+    margin-top: 0.69vw;
+}
+
+.register > form > input {
+    width: 50vw;
+    height: 6vw;
+    border-radius: 0.41vw;
+    padding: 1vw;
+    font-size: 3vw;
+}
+
+.password {
+    width: 100%;
+    height: 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+}
+
+.password > input {
+    width: 50vw;
+    height: 6vw;
+    border-radius: 0.41vw;
+    padding: 1vw;
+    font-size: 3vw;
+}
+
+.eyes {
+    width: 3vw;
+    background-color: transparent;
+    font-size: 3.3vw;
+    position: absolute;
+    border: 0;
+    right: 19vw;
+    top: 1.1vw;
+    color: black;
+}
+
+.register > form > button {
+    width: 40vw;
+    height: 5vw;
+    border-radius: 0.41vw;
+    background-color: rgb(10, 10, 67);
+    color: aliceblue;
+    margin-top: 0.62vw;
+    font-size: 3vw;
+}
+
+.register a {
+    font-size: 4vw;
+    text-decoration: none;
+    color: purple;
+}
+
+.button-login {
+    width: 20vw !important;
+}
+

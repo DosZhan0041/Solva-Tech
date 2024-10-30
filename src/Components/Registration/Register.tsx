@@ -1,26 +1,31 @@
 import { Link, useNavigate } from 'react-router-dom';
-import './Login.css'
-import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import './Register.css'
+import { SubmitHandler, useForm } from 'react-hook-form';
+import React, { useState } from 'react';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
-let Login = ()=>{
+interface FormValues {
+    email: string;
+    password: string
+}
+
+let Register: React.FC = ()=>{
     let navigate = useNavigate()
     const [eyes, setEyes] = useState(false);
-    const {register, handleSubmit, formState: {errors}} = useForm();
-    const [formValues, setFormValues] = useState({
+    const {register, handleSubmit, formState: {errors}} = useForm<FormValues>();
+    const [formValues, setFormValues] = useState<FormValues>({
         email: '',
         password: ''
     });
 
-    const onSubmit = (data) => {
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
         const newUser = {
             email: data.email,
             password: data.password
         };
 
-            fetch('http://localhost:8080/login', {
+            fetch('http://localhost:8080/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,7 +48,7 @@ let Login = ()=>{
     };
 
 
-    const handleInputChange = (e)=>{
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         const {name, value} = e.target;
         setFormValues((prevValues)=>({
             ...prevValues,
@@ -53,27 +58,30 @@ let Login = ()=>{
 
     return(
          <div className='register'>
-            <h1>Login Page</h1>
+            <h1>Welcome to the website!</h1>
+            <img src='/img/icon-login.png'></img>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input placeholder='email' type='email' {...register("email", {required: 'Введите email', pattern: {value: /^[a-zA-Z0-9._%+-]{6,}@\S+\.\S+$/, message: "Часть email до @ должна содержать минимум 6 символов" }})} value={formValues.email} onChange={handleInputChange}/>
                 {errors.email && <p className='error'>{errors.email.message}</p>}
-                <input placeholder='password' type={eyes ? "text" : "password"} {...register("password", {required:'Введите пароль', minLength:{value: 6, message: 'Пароль должен содержать не менее 6 символов'}})} value={formValues.password} onChange={handleInputChange}/>
-                {errors.password && <p className='error'>{errors.password.message}</p>}
-                {
-                    eyes ? (
-                        <button onClick={()=>(setEyes(false))}><FaEye /></button>
-                    )
-                    :
-                    (
-                        <button onClick={()=>(setEyes(true))}><FaEyeSlash /></button>
-                    )
+                <div className='password'>
+                    <input  placeholder='password' type={eyes ? "text" : "password"} {...register("password", {required:'Введите пароль', minLength:{value: 6, message: 'Пароль должен содержать не менее 6 символов'}})} value={formValues.password} onChange={handleInputChange}/>
+                    {errors.password && <p className='error'>{errors.password.message}</p>}
+                    {
+                        eyes ? (
+                            <button className='eyes' onClick={()=>(setEyes(false))}><FaEye /></button>
+                        )
+                        :
+                        (
+                            <button className='eyes' onClick={()=>(setEyes(true))}><FaEyeSlash /></button>
+                        )
 
-                   
-                }
-                <button type='submit'>Войти</button>
+                    
+                    }
+                </div>
+                <button type='submit'>Зарегистрироваться</button>
             </form>
-            <Link to='/register'>Зарегистрироваться</Link>
+            <Link to='/login'>У меня есть аккаунт!</Link>
          </div>
     )
 }
-export default Login;
+export default Register;

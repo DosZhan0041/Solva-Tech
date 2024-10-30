@@ -1,7 +1,41 @@
 import { useForm } from 'react-hook-form';
 import './PlanetsDescription.css';
+import React from 'react';
 
-let PlanetDescription = (props) => {
+
+interface Planet {
+    name: string,
+    rotation_period: string,
+    orbital_period: string,
+    diameter: string,
+    climate: string,
+    gravity: string,
+    terrain: string,
+    population: string
+}
+
+interface PlanetPageType{
+    currentPlanetPage: number,
+    isLoad: boolean,
+    planet: Planet[],
+    totalPlanetPages: number
+}
+
+interface authUserType{
+    email: string,
+    password: string
+}
+
+interface propsType {
+    PlanetPage: PlanetPageType,
+    authUser: authUserType,
+    onePlanet: Planet,
+    editMode: boolean,
+    onEdit:()=>void;
+    onSave: (data: any)=>void;
+}
+
+let PlanetDescription: React.FC<propsType> = (props) => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             name: props.onePlanet.name,
@@ -15,7 +49,7 @@ let PlanetDescription = (props) => {
         },
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: any) => {
         props.onSave(data); 
     }
 

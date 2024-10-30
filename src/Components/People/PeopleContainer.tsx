@@ -1,12 +1,45 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import People from "./People";
 import { connect } from "react-redux";
 import { getPeople, setPeoplePage, togglePreloader } from "../../store/PeopleReducer";
 import withAuthRedirect from "../HOC/withAuthRedirect";
+import { Dispatch } from "redux";
 
+interface Person {
+    name: string;
+    height: string;
+    mass: string;
+    hair_color: string;
+    skin_color: string;
+    eye_color: string;
+    gender: string;
+    birth_year: string;
+}
 
-let PeopleContainer = (props) =>{
-    const fetchPeople = (page)=>{
+interface PeoplePageType{
+    currentPeoplePage: number,
+    isLoad: boolean,
+    people: Person[],
+    totalPeoplePages: number
+}
+
+interface authUserType{
+    email: string,
+    password: string
+}
+
+interface propsType {
+    PeoplePage: PeoplePageType,
+    authUser: authUserType,
+    getPeople:(people: any[], totalPeopleCount: number)=>void;
+    isLoad: boolean,
+    setPeoplePage: (page: number)=>void;
+    togglePreloader: (status: boolean)=>void;
+}  
+
+let PeopleContainer: React.FC<propsType> = (props) =>{
+    
+    const fetchPeople = (page: number)=>{
             props.togglePreloader(true)
             fetch(`https://swapi.dev/api/people/?page=${page}`)
             .then (function(response){
@@ -30,22 +63,28 @@ let PeopleContainer = (props) =>{
     return <People {...props}/>
 }
 
-let mapStateToProps = (state) => {
+interface RootState {
+    PeoplePage: PeoplePageType,
+    isLoad: boolean
+}
+
+let mapStateToProps = (state:RootState) => {
     return{
         PeoplePage: state.PeoplePage,
         isLoad: state.PeoplePage.isLoad
     }
 }
 
-let mapDispatchToProps = (dispatch) =>{
+
+let mapDispatchToProps = (dispatch: Dispatch<any>) =>{
     return{
-        getPeople:(people, totalPeopleCount) => {
+        getPeople:(people: Person[], totalPeopleCount: number) => {
             dispatch(getPeople(people, totalPeopleCount))
         },
-        setPeoplePage: (page)=>{
+        setPeoplePage: (page: number)=>{
             dispatch(setPeoplePage(page))
         },
-        togglePreloader: (status)=>{
+        togglePreloader: (status: boolean)=>{
             dispatch(togglePreloader(status))
         }
     }

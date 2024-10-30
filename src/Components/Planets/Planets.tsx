@@ -1,8 +1,41 @@
+import React from 'react';
 import Preloader from '../Preloader/Preloader';
 import './Planets.css';
 import PlanetsBlock from './PlanetsBlock';
 
-let Planets = (props) => {
+interface Planet {
+    name: string,
+    rotation_period: string,
+    orbital_period: string,
+    diameter: string,
+    climate: string,
+    gravity: string,
+    terrain: string,
+    population: string
+}
+
+interface PlanetPageType{
+    currentPlanetPage: number,
+    isLoad: boolean,
+    planet: Planet[],
+    totalPlanetPages: number
+}
+
+interface authUserType{
+    email: string,
+    password: string
+}
+
+interface propsType {
+    PlanetPage: PlanetPageType,
+    authUser: authUserType,
+    isLoad: boolean,
+    getPlanet:(planet: any[], totalPlanetCount: number)=>void;
+    setPlanetPage:(page: number)=>void;
+    togglePreloader: (status: boolean)=>void;
+}
+
+let Planets: React.FC<propsType> = (props) => {    
     
     let currentPage = props.PlanetPage.currentPlanetPage;
     

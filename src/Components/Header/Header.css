@@ -1,108 +1,246 @@
 
-.Header {
-    width: 100%;
-    height: 230px;
+
+@media(max-width: 4096px){
+    .Header {
+        width: 100%;
+        height: 15.78vw;
+        display: flex;
+        flex-direction: column;
+        font-family: "Moderustic", sans-serif;
+        border-bottom: 0.14vw solid gray;
+    }
+    
+    .Header-up {
+        width: 100%;
+        height: 60%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .Header-up-left {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .Header-up-left img {
+        width: 17.14vw;
+        height: 6.86vw;
+        filter: invert(0.8);
+    }
+    
+    .Header-up-right {
+        width: 25%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .Header-up-right button {
+        display: flex;
+        width: 7.55vw;
+        height: 3.09vw;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        border-radius: 0.55vw;
+        gap: 0.41vw;
+        background-color: rgba(255, 255, 255, 0.744);
+        transition: .7s;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    
+    .Header-up-right button:hover {
+        background-color: rgba(31, 17, 190, 0.454);
+        color: #dedede;
+        border-color: white;
+    }
+    
+    .Header-up-right button svg {
+        font-size: 1.17vw;
+    }
+    
+    .Header-up-right button p {
+        font-size: 1.23vw;
+        font-weight: 700;
+    }
+    
+    .Header nav {
+        width: 100%;
+        height: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .Header ul {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .Header nav li {
+        font-size: 1.23vw;
+        width: 13.72vw;
+        text-decoration: none;
+        list-style-type: none;
+    }
+    
+    .Header ul li a {
+        text-decoration: none;
+        list-style-type: none;
+        color: rgba(255, 255, 255, 0.744);
+    }
+    
+    .active {
+        color: rgb(137, 15, 137) !important;
+    }
+    
+    .menu-burger {
+        display: none;
+    }
+    
+    .menu-logo{
+        display: none;
+    }
+      
+    
+}
+
+@media(max-width: 768px){
+
+    .Header{
+        display: flex;
+        width: 100%;
+        height: 20vw;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .Header-up {
+        width: 79%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    
+    .Header-up-left {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .Header-up-left img {
+        width: 30vw;
+        height: 12vw;
+    }
+    
+    .Header-up-right {
+        width: 25%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .Header-up-right button {
+        width: 12vw;
+        height: 5vw;
+        border-radius: 1vw;
+        gap: 0.41vw;
+        color: black;
+    }
+    
+    .Header-up-right button svg {
+        font-size: 2vw;
+    }
+    
+    .Header-up-right button p {
+        font-size: 2vw;
+    }
+
+    .Header-down{
+        width: 0;
+        height: 0;
+    }
+    
+    nav{
+        width: 0 !important;
+        height: 0 !important;
+        display: flex;
+        font-size: 4.32vw;
+        z-index: 10;
+        text-align: left !important;
+      }
+    
+
+  .Header ul{
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: "Moderustic", sans-serif;
-    border-bottom: 2px solid gray;
-} 
+    position: fixed;
+    top: 0;  
+    left: -100%;
+    width: 55%;
+    background: linear-gradient(5deg, rgb(42, 22, 94), rgb(49, 5, 78));
+    align-items: center;
+    justify-content: start;
+    padding-top: 13vw;
+    border-top-right-radius: 1.5vw;
+    border-bottom-right-radius: 1.5vw;
+  }
 
-
-.Header-up{
-    width: 100%;
-    height: 60%;
+  .Header nav li{
+    width: 60% !important;
+    height: 10vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
-}
+    justify-content:flex-start;
+    cursor: pointer;
+    text-align: left;
+    font-size: 4vw;
+  }
 
+  
+  .menu-logo{
+    width: 70% !important;
+    height: 23% !important;
+    display: flex !important;
+    margin-bottom: 1.3vw;
+  }
 
-.Header-up-left{
-    width: 30%;
-    height: 100%;
+  .menu-logo img{
+    width: 30vw !important;
+    height: 16vw;
+    filter: invert(10);
+  }
+
+  nav.menu-open ul{
+    left: 0;
+  }
+
+  .menu-burger{
     display: flex;
-    align-items: center;
-}
-
-.Header-up-left img {
-    width: 250px;
-    height: 100px;
-    filter: invert(0.8);
-}
-
-.Header-up-right{
-    width: 25%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.Header-up-right button{
-    display: flex;
-    width: 110px;
-    height: 45px;
-    align-items: center;
-    justify-content:center;
-    flex-direction: row;
-    border-radius: 8px;
-    gap: 6px;   
-    background-color: rgba(255, 255, 255, 0.744);
-    transition: .7s;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.Header-up-right button:hover{
-    background-color: rgba(31, 17, 190, 0.454);
     color: #dedede;
-    border-color: white;
-}
-
-.Header-up-right button svg{
-    font-size: 17px;
-}
-
-.Header-up-right button p {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.Header-down {
-    width: 100%;
-    height: 40%;
-    display: flex;
-    align-items: center;
+    width: 35%;
     justify-content: center;
-}
-
-.Header-down ul{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.Header-down ul li{
-    font-size: 18px;
-    width: 20%;
-    text-decoration: none;
-    list-style-type: none;
-}
-
-.Header-down ul li a {
-    text-decoration: none;
-    list-style-type: none;
-    color: rgba(255, 255, 255, 0.744);
-}
-
-.active{
-    color: rgb(137, 15, 137) !important;
-}
-
-.menu-burger{
-    display: none;
+  }
+  
+  .menu-burger svg{
+    font-size: 4.5vw;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 }

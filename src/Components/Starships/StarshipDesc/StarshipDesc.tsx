@@ -1,7 +1,41 @@
 import { useForm } from 'react-hook-form';
 import './StarshipDesc.css';
+import React from 'react';
 
-let StarshipDescription = (props) => {
+interface StarshipType{
+    name: string,
+    model: string,
+    cost_in_credits: string,
+    length: string,
+    passengers: string,
+    starship_class: string,
+    max_atmosphering_speed: string,
+    crew: string,
+    url : string
+}
+interface authUserType{
+    email: string,
+    password: string
+}
+
+interface StarshipPageType{
+    Starship: StarshipType[],
+    currentStarshipPage: number,
+    isLoad: boolean,
+    totalStarshipPages: number
+}
+
+interface propsType{
+    StarshipPage: StarshipPageType,
+    authUser: authUserType,
+    oneStarship: StarshipType,
+    editMode: boolean,
+    onEdit:()=>void;
+    onSave: (data: any)=>void;
+}
+
+
+let StarshipDescription: React.FC<propsType> = (props) => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             name: props.oneStarship.name,
@@ -15,7 +49,7 @@ let StarshipDescription = (props) => {
         },
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: any) => {
         props.onSave(data); 
     }
 
@@ -93,7 +127,7 @@ let StarshipDescription = (props) => {
                         </form>
                     </div>
                 ) : (
-                    <div className='peopleDescRight'>
+                    <div className='StarshipDescRight'>
                         <h3>name: {props.oneStarship.name}</h3>
                         <p>model: {props.oneStarship.model}</p>
                         <p>price: {props.oneStarship.cost_in_credits}</p>

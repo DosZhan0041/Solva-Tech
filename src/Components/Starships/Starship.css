@@ -1,43 +1,96 @@
-.Starship{
-    width: 100%;
-    height: 400px;
-    color: rgba(255, 255, 255, 0.744);
-    margin-top: 40px;
+
+
+@media(max-width: 4096px){
+    .Starship {
+        width: 100%;
+        height: 27.44vw;
+        color: rgba(255, 255, 255, 0.744);
+        margin-top: 2.74vw;
+    }
+    
+    .Starship-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .Starship-down {
+        width: 100%;
+        height: 20.59vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2.54%;
+    }
+    
+    .Starship-pagination {
+        width: 34.31vw;
+        height: 6.84vw;
+        display: flex;
+        flex-direction: row;
+        gap: 1.38vw;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .Starship-pagination button {
+        width: 7.54vw;
+        height: 2.06vw;
+        border-radius: 0.34vw;
+        border-color: bisque;
+        font-size: 1.03vw;
+    }
+    
 }
 
-.Starship-wrapper{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-
-.Starship-down{
-    width: 100%;
-    height: 300px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 3.7%;
-}
-
-
-.Starship-pagination{
-    width: 50%;
-    height: 100px;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-}
-
-.Starship-pagination button{
-    width: 110px;
-    height: 30px;
-    border-radius: 5px;
-    border-color: bisque;
-    font-size: 15px;
+@media(max-width: 768px){
+    .Starship {
+        width: 100%;
+        height: 125vw;
+        color: rgba(255, 255, 255, 0.744);
+        margin-top: 10vw;
+    }
+    
+    .Starship-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .Starship-down {
+        width: 100%;
+        height: 110vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5vw;
+        justify-content: center;
+    }
+    
+    .Starship-pagination {
+        width: 50%;
+        height: 10vw;
+        display: flex;
+        flex-direction: row;
+        gap: 1.37vw;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .Starship-pagination button {
+        width: 20vw;
+        height: 5vw;
+        border-radius: 0.34vw;
+        border-color: bisque;
+        border-width: 0.5vw;
+        font-size: 3vw;
+        color: black;
+        margin-top: 5vw;
+    }
+    
 }

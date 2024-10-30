@@ -1,14 +1,9 @@
 {
   "users": [
     {
-      "email": "dosuufif@gmail.ru",
-      "password": "$2a$10$DvDa/Mun0Iww.Wh1xx4RIuycLCPf40rlsu/7jW7ckabDyjl0RiuU6",
+      "email": "adminadmin@mail.ru",
+      "password": "$2a$10$a5BGeMxgaQooAK6xaSxy.eF6WNzyBf6gIdfWsCzMwmyp6CSYLl1vq",
       "id": 1
-    },
-    {
-      "email": "dosyaaaa@mail.ru",
-      "password": "$2a$10$4hoWz7lGPfFv2Z/IyphnZevcR0mC9SxmCEIBsTkvYCEMCODsSCCKS",
-      "id": 2
     }
   ]
 }

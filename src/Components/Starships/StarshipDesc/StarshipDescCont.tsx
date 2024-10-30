@@ -1,13 +1,63 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import StarshipDesc from "./StarshipDesc";
 import withAuthRedirect from "../../HOC/withAuthRedirect";
 
-let StarshipDescContainer = (props) => {
-    let [oneStarship, setOneStarship] = useState({});
+
+interface StarshipType{
+    name: string,
+    model: string,
+    cost_in_credits: string,
+    length: string,
+    passengers: string,
+    starship_class: string,
+    max_atmosphering_speed: string,
+    crew: string,
+    url : string
+}
+
+interface authUserType{
+    email: string,
+    password: string
+}
+
+interface StarshipPageType{
+    Starship: StarshipType[],
+    currentStarshipPage: number,
+    isLoad: boolean,
+    totalStarshipPages: number
+}
+
+interface propsType{
+    StarshipPage: StarshipPageType,
+    authUser: authUserType,
+}
+
+let StarshipDescContainer: React.FC<propsType> = (props) => {
+    let [oneStarship, setOneStarship] = useState<StarshipType>({
+        name: '',
+        model: '',
+        cost_in_credits: '',
+        length: '',
+        passengers: '',
+        starship_class: '',
+        max_atmosphering_speed: '',
+        crew: '',
+        url : ''
+    });
     let [editMode, setEditMode] = useState(false);
-    let [editedStarship, setEditedStarship] = useState({});
+    let [editedStarship, setEditedStarship] = useState<StarshipType>({
+        name: '',
+        model: '',
+        cost_in_credits: '',
+        length: '',
+        passengers: '',
+        starship_class: '',
+        max_atmosphering_speed: '',
+        crew: '',
+        url : ''
+    });
 
     const { id } = useParams();
 
@@ -33,11 +83,10 @@ let StarshipDescContainer = (props) => {
         setEditMode(true);
     };
 
-    const handleSave = (data) => {
+    const handleSave = (data: Partial<StarshipType>) => {
       const updatedStarship = {
           ...editedStarship, 
-          ...data, 
-          image: oneStarship.image 
+          ...data
       };
       setOneStarship(updatedStarship);  
       setEditedStarship(updatedStarship); 
@@ -55,7 +104,11 @@ let StarshipDescContainer = (props) => {
     );
 };
 
-let mapStateToProps = (state) => {
+interface RootState{
+    StarshipPage: StarshipPageType
+}
+
+let mapStateToProps = (state: RootState) => {
     return {
         StarshipPage: state.StarshipPage
     };
